@@ -39,9 +39,20 @@ export default function Home() {
         </div>
       </div>
 
+{/* 
+        lessons learned: always use flex[x] flex[y] to avoid overflow issues (or zoom in issues ig idk) instead of w[x%] h[y%]
+                        also use flex-1 for the main content to make it scrollable
+                        also use padding instead of w[x%] h[y%] to avoid overflow issues
+                        also  absoulute is fucking disgusting, why tf would i ever use it if it fucks the zoom in and out so much?? (turns out use it for overlapping elements)
+                        also min-h-screen > h-screen (i think, i still don't understand it fully)
+                        also overflow-y-scroll is dogshit 
+                        also flex-grow is sick, i still don't understand it but it works 
+                        */}
+
       {/* Main Scrollable Content */}
-      <main className="flex-1 bg-white overflow-y-scroll ">
+      <main className="flex-1 bg-white  ">
         <div className="flex min-h-screen">
+
           {/* LEFT: Image Section */}
           <div className="flex-[3] h-screen">
             <section className="h-screen w-full">
@@ -50,19 +61,21 @@ export default function Home() {
           </div>
 
           {/* RIGHT: ABOUT US Section */}
-          <div className="flex-[1] min-h-screen flex flex-col items-center relative overflow-visible">
+          <div className="flex-[0.1] min-h-screen flex flex-col items-center relative overflow-visible">
+
+            {/* i dont understand why but flex-grow helped me out here to make the line-ABOUT US-line thing, need to look into it more */}
             {/* Title */}
-            <div className='flex items-center w-full mt-10 px-30 gap-4 my-1'>
+            <div className= 'flex items-center w-full mt-10 px-30 gap-4 my-1'>
               <div className="flex-grow h-[3px] bg-orange-500" />
-              <div className="flex-grow h-[60px] rounded-lg bg-orange-500 flex items-center justify-center shadow-md">
+              <div className="flex-grow h-[60px] rounded-lg  bg-orange-500 flex items-center justify-center shadow-md">
                 <h1 className="text-4xl font-bold text-white font-serif whitespace-nowrap">ABOUT US</h1>
               </div>
               <div className="flex-grow h-[3px] bg-orange-500" />
             </div>
 
             {/* Paragraph */}
-            <div className="mt-1 px-8 py-6 max-w-[90%] rounded-lg text-orange-500 leading-relaxed">
-              <p className="text-3xl text-center font-serif">
+            <div className="mt-1 px-8 py-6 max-w-[90%] rounded-lg text-orange-700   leading-relaxed">
+              <p className=" text-3xl text-center font-serif">
                 Credit Info is dedicated to empowering individuals and businesses with accurate,
                 transparent, and secure credit insights. We simplify complex financial data into
                 clear reports that support smarter decisions. Our mission is to promote financial
@@ -72,64 +85,80 @@ export default function Home() {
 
             <div className="flex w-full items-center mt-10 px-30 gap-4 my-1">
               <div className="flex-grow h-[3px] bg-orange-500" />
-              <div className="flex-grow py-3 rounded-lg bg-orange-500 flex items-center justify-center shadow-md">
+              <div className ="flex-grow  py-3 rounded-lg bg-orange-500 flex items-center justify-center shadow-md">
                 <h1 className="text-4xl font-bold font-serif text-white whitespace-nowrap">GOALS</h1>
               </div>
               <div className="flex-grow h-[3px] bg-orange-500" />
             </div>
 
             <div className="mt-3 px-8 py-6 max-w-[90%] flex justify-center rounded-lg gap-6 text-orange-500 relative leading-relaxed ">
-              {/* Normal button {Innovation} */}
-              <button
-                onMouseEnter={() => setGoal1(true)} onMouseLeave={() => setGoal1(false)}
-                className={`outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl relative z-10 
-                ${!Goal1 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'} `}
-              >
+
+              {/* im a genius */}
+
+              {/* normal button {Innovation} */}
+              <button onMouseEnter={() => setGoal1(true)} onMouseLeave={()=>setGoal1(false)}
+              className={`outline outline-3 outline-orange-500 text-orange-600 px-10 py-40 rounded-lg font-bold font-serif text-3xl relative z-10 
+              ${!Goal1 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'} `}>
                 Innovation
-              </button>
+              </button>     
 
               {/* Hover animation button {Innovation} */}
-              <button
-                className={`absolute left-0 bg-orange-500 text-white px-10 py-40 overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
-                ${Goal1 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}
-              >
+              <button 
+              className={`absolute left-0 bg-orange-500 text-white px-10 py-40  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
+              ${Goal1 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
                 Innovation
               </button>
 
-              {/* Normal button {Growth} */}
-              <button
-                onMouseEnter={() => setGoal2(true)} onMouseLeave={() => setGoal2(false)}
-                className={`outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl relative z-10
-                ${!Goal2 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}
-              >
+              {/* normal button {Growth} */}
+              <button onMouseEnter={()=> setGoal2(true)} onMouseLeave={()=>setGoal2(false)}
+              className={`outline outline-3 outline-orange-500 text-orange-600 px-10 py-40 rounded-lg font-bold font-serif text-3xl  relative z-10
+              ${!Goal2 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}> 
                 Growth
-              </button>
+              </button>   
 
               {/* Hover animation button {Growth} */}
-              <button
-                className={`absolute left-68.5 bg-orange-500 text-white px-10 py-40 rleative overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
-                ${Goal2 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}
-              >
+              <button 
+              className={`absolute left-68.5 bg-orange-500 text-white px-10 py-40 rleative  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
+              ${Goal2 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
                 Growth
               </button>
 
-              {/* Normal button {Community} */}
-              <button
-                onMouseEnter={() => setGoal3(true)} onMouseLeave={() => setGoal3(false)}
-                className={`outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl relative z-10
-                ${!Goal3 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}
-              >
-                Community
-              </button>
+              {/* normal button {Community} */}
+              <button onMouseEnter={()=> setGoal3(true)} onMouseLeave={()=>setGoal3(false)} 
+              className={`outline outline-3 outline-orange-500 text-orange-600 px-10 py-40 rounded-lg font-bold font-serif text-3xl  relative z-10
+              ${!Goal3 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
+                Community 
+              </button>    
 
-              {/* Hover animation button {Community} */}
-              <button
-                className={`absolute right-0 bg-orange-500 text-white px-10 py-40 rleative overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
-                ${Goal3 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}
-              >
+              {/* Hover animation button {Community} */}   
+              <button 
+              className={`absolute right-0 bg-orange-500 text-white px-10 py-40 rleative  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
+              ${Goal3 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
                 Community
               </button>
             </div>
+
+            {/* 
+            <div className={`mt-3 px-8 py-6 max-w-[90%] flex justify-center ounded-lg gap-6 text-orange-500 leading-relaxed ${
+              Goal1 ? 'max-h-[200px] pr-20 p-5' : 'max-h-0 p-0'
+            }`} >
+
+              <button
+              className="outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl">
+                Innovation
+              </button>     
+
+              <button
+              className="outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl">
+                Growth
+              </button>   
+
+              <button  className="outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl">
+                Community 
+              </button>     
+            </div>
+            */}
+
           </div>
         </div>
 
