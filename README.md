@@ -13,7 +13,7 @@ Frontend for the [Credit-info-API](https://github.com/NawafAldhawi/Credit-info-A
 ## Screenshots
 
 ### Homepage
-![Homepage](public/Screenshots/homepage.jpg)
+![Homepage](public/Screenshots/homepage2.jpg)
 
 ### Register Page
 ![Register Page](public/Screenshots/registerpage.jpg)
