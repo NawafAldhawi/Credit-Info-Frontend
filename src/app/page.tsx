@@ -18,7 +18,7 @@ export default function Home() {
           <div className="ml-auto mr-10 hidden md:block">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold"
+              className="bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold"
             >
               Menu
             </button>
@@ -27,7 +27,7 @@ export default function Home() {
 
         {/* Dropdown */}
         <div
-          className={`absolute top-[80px] right-0 transition-all duration-300 overflow-hidden bg-orange-500 z-20 ${
+          className={`absolute top-[80px] right-0 transition-all duration-300 overflow-hidden bg-orange-600 z-20 ${
             isOpen ? 'max-h-[200px] pr-20 p-5' : 'max-h-0 p-0'
           }`}
         >
@@ -57,20 +57,27 @@ export default function Home() {
         {/* LEFT: Image Section */}
         <div className="flex-[3] h-screen">
           <section className="h-screen w-full">
-            <img src="/stockbs.jpg" alt="Image 1" className="object-cover w-full h-full" />
+            <img src="/stockbs.jpg" alt="Image 1" className="object-cover w-full h-[120%]" />
           </section>
         </div>
 
         {/* RIGHT: ABOUT US Section */}
-        <div className="flex-[2] min-h-screen flex flex-col items-center relative overflow-visible">
+        <div className="flex-[1] min-h-screen flex flex-col items-center relative overflow-visible">
 
+
+          {/* i dont understand why but flex-grow helped me out here to make the line-ABOUT US-line thing, need to look into it more */}
           {/* Title */}
-          <div className="px-6 py-3 h-[60px] rounded-lg bg-orange-500 flex absolute top-8 items-center justify-center shadow-md">
-            <h1 className="text-4xl font-bold text-white whitespace-nowrap ">ABOUT US</h1>
+          <div className= 'flex items-center w-full mt-10 px-30 gap-4 my-1'>
+            <div className="flex-grow h-[3px] bg-orange-600" />
+          <div className="flex-grow h-[60px] rounded-lg  bg-orange-600 flex items-center justify-center shadow-md">
+            <h1 className="text-4xl font-bold text-white font-serif whitespace-nowrap">ABOUT US</h1>
+          </div>
+          <div className="flex-grow h-[3px] bg-orange-600" />
+
           </div>
 
           {/* Paragraph */}
-          <div className="mt-24 px-8 py-6 max-w-[90%] rounded-lg text-orange-500   leading-relaxed">
+          <div className="mt-1 px-8 py-6 max-w-[90%] rounded-lg text-orange-500   leading-relaxed">
             <p className=" text-3xl text-center font-serif">
               Credit Info is dedicated to empowering individuals and businesses with accurate,
               transparent, and secure credit insights. We simplify complex financial data into
@@ -79,49 +86,58 @@ export default function Home() {
             </p>
           </div>
 
-           <div className ="px-6 py-3 rounded-lg bg-orange-500 flex top-110 shadow-md">
-            <h1 className="text-4xl font-bold text-white">GOALS</h1>
+          <div className="flex w-full items-center mt-10 px-30 gap-4 my-1">
+            <div className="flex-grow h-[3px] bg-orange-600" />
+           <div className ="flex-grow  py-3 rounded-lg bg-orange-600 flex items-center justify-center shadow-md">
+            <h1 className="text-4xl font-bold font-serif text-white whitespace-nowrap">GOALS</h1>
            </div>
+            <div className="flex-grow h-[3px] bg-orange-600" />
+          </div>
 
            <div className="mt-3 px-8 py-6 max-w-[90%] flex justify-center rounded-lg gap-6 text-orange-500 relative leading-relaxed ">
 
             {/* im a genius */}
-            <button onMouseEnter={() => setGoal1(!Goal1)} onMouseLeave={()=>setGoal1(!Goal1)}
-            className={`outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl relative z-10 
+
+            {/* normal button {Innovation} */}
+            <button onMouseEnter={() => setGoal1(true)} onMouseLeave={()=>setGoal1(false)}
+            className={`outline outline-3 outline-orange-600 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl relative z-10 
              ${!Goal1 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'} `}>
               Innovation
             </button>     
 
+            {/* Hover animation button {Innovation} */}
             <button 
-            className={`absolute left-0 bg-orange-500 text-white px-10 py-40  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
+            className={`absolute left-0 bg-orange-600 text-white px-10 py-40  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
             ${Goal1 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
               Innovation
             </button>
 
 
-
-            <button onMouseEnter={()=> setGoal2(!Goal2)} onMouseLeave={()=>setGoal2(!Goal2)}
-            className={`outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl  relative z-10
+            {/* normal button {Growth} */}
+            <button onMouseEnter={()=> setGoal2(true)} onMouseLeave={()=>setGoal2(false)}
+            className={`outline outline-3 outline-orange-600 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl  relative z-10
               ${!Goal2 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`
             }>
               Growth
             </button>   
 
+            {/* Hover animation button {Growth} */}
             <button 
-            className={`absolute left-68.5 bg-orange-500 text-white px-10 py-40 rleative  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
+            className={`absolute left-68.5 bg-orange-600 text-white px-10 py-40 rleative  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
             ${Goal2 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
               Growth
             </button>
 
-
-            <button onMouseEnter={()=> setGoal3(!Goal3)} onMouseLeave={()=>setGoal3(!Goal3)} 
-            className={`outline outline-3 outline-orange-500 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl  relative z-10
+            {/* normal button {Community} */}
+            <button onMouseEnter={()=> setGoal3(true)} onMouseLeave={()=>setGoal3(false)} 
+            className={`outline outline-3 outline-orange-600 text-orange px-10 py-40 rounded-lg font-bold font-serif text-3xl  relative z-10
             ${!Goal3 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
               Community 
             </button>    
-              
+
+             {/* Hover animation button {Community} */}   
             <button 
-            className={`absolute right-0 bg-orange-500 text-white px-10 py-40 rleative  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
+            className={`absolute right-0 bg-orange-600 text-white px-10 py-40 rleative  overflow-hidden rounded-lg font-bold font-serif text-3xl z-0
             ${Goal3 ? 'pr-10 py-10 opacity-100' : 'max-h-0 p-0 opacity-0'}`}>
               Community
             </button>

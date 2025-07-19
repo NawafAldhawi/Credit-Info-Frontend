@@ -29,7 +29,7 @@ export default function RegisterPage() {
 
       <div className="flex ml-15 mt-10 space-x-3 mr-10">
     <img src="/logoipsum-377.svg" alt="Logo" className="h-15 w-15" />
-    <h1 className="text-4xl font-bold text-black mt-3 ml-2">Credit Info. Website</h1>
+    <h1 className="text-4xl font-bold text-orange-600 mt-3 ml-2">Credit Info. Webpage</h1>
     </div>
 
     <div className="p-20 mt-10 space-y-6">
